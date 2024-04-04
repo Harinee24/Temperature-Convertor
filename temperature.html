@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="temperatureCSS.css">
+        <title>Temperature Convertor</title>
+    </head> 
+    <body>
+        <div> 
+            <img src="temp1.jpg" width="1500px" height="700px" style="opacity: 0.5;">
+            <h1>Temperature convertor</h1>
+            <form id="f">
+                <label><b>Enter Temperature : </b></label><input type="number" id="num"><br><br>
+                <label><b>Convert to : </b><br><br></label>
+                <input type="radio"name="option" value="Fahrenheit"><label>Fahrenheit</label>
+                <input type="radio"name="option" value="Celsius"><label>Celsius</label><br><br>
+                <button type="button" onclick="convertTemperature()">Convert</button><br><br>
+                <p id="result"></p>
+            </form>
+           
+        </div>
+        <script>
+            function convertTemperature() {
+                var temperature = parseFloat(document.getElementById("num").value);
+                var option = document.querySelector('input[name="option"]:checked').value;
+                var convertedTemperature;
+
+                if (option === "Fahrenheit") {
+                    convertedTemperature = (temperature * 9 / 5) + 32;
+                    document.getElementById("result").innerHTML = "Converted Temperature: " + convertedTemperature.toFixed(2) + " Fahrenheit";
+                } else if (option === "Celsius") {
+                    convertedTemperature = (temperature - 32) * 5 / 9;
+                    document.getElementById("result").innerHTML = "Converted Temperature: " + convertedTemperature.toFixed(2) + " Celsius";
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>
